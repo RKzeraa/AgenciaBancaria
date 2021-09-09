@@ -10,9 +10,12 @@ namespace AgenciaBancaria.App
             try
             {
 
+                Endereco endereco = new Endereco("Minha Rua", "12345678", "Recife", "PE");
+                Cliente cliente = new Cliente("Ramom", "123123", "321321", endereco);
 
-                Cliente cliente = new Cliente("Ramom", "123123", "321321",
-                    "Minha Rua", "12345678", "Recife", "PE");
+                ContaBancaria conta = new ContaBancaria(cliente);
+
+                Console.WriteLine("Conta criada: " + conta.NumeroConta + "-" + conta.DigitoVerificador);
             }
             catch(Exception ex)
             {
