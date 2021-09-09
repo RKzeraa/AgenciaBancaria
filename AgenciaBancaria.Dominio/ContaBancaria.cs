@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AgenciaBancaria.Dominio
@@ -17,6 +18,26 @@ namespace AgenciaBancaria.Dominio
             Situacao = SituacaoConta.Criada;
 
             Cliente = cliente ?? throw new Exception("Cliente deve ser informado!");
+        }
+
+        public void Abrir(string senha)
+        {
+            SetSenha(senha);
+
+            Situacao = SituacaoConta.Aberta;
+            DataAbertura = DateTime.Now;
+
+        }
+
+        private void SetSenha(string senha)
+        {
+            senha = senha.ValidaStringVazia();
+
+            if(!Regex.IsMatch(senha, @"^(?=.*?[a-z])(?=.*?[0-9]).{8,}$"))
+            {
+                throw new Exception("Senha inválida!");
+            }
+            Senha = senha;
         }
         public int NumeroConta { get; init; }
         public int DigitoVerificador { get; init; }

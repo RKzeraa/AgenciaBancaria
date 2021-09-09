@@ -15,7 +15,10 @@ namespace AgenciaBancaria.App
 
                 ContaBancaria conta = new ContaBancaria(cliente);
 
-                Console.WriteLine("Conta criada: " + conta.NumeroConta + "-" + conta.DigitoVerificador);
+                conta.Abrir("abc123");
+
+                Console.WriteLine("Conta: " + conta.Situacao + ": " + conta.NumeroConta + "-" + conta.DigitoVerificador);
+
             }
             catch(Exception ex)
             {
