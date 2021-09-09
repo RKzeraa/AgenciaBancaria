@@ -39,6 +39,20 @@ namespace AgenciaBancaria.Dominio
             }
             Senha = senha;
         }
+
+        public virtual void Sacar(decimal valor, string senha)
+        {
+            if(Senha != senha)
+            {
+                throw new Exception("Senha inválida!");
+            }
+
+            if(Saldo < valor)
+            {
+                throw new Exception("Saldo insuficiente!");
+            }
+            Saldo -= valor;
+        }
         public int NumeroConta { get; init; }
         public int DigitoVerificador { get; init; }
         public decimal Saldo { get; protected set; }
