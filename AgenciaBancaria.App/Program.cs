@@ -13,9 +13,9 @@ namespace AgenciaBancaria.App
                 Endereco endereco = new Endereco("Minha Rua", "12345678", "Recife", "PE");
                 Cliente cliente = new Cliente("Ramom", "123123", "321321", endereco);
 
-                ContaBancaria conta = new ContaBancaria(cliente);
+                ContaCorrente conta = new ContaCorrente(cliente);
 
-                conta.Abrir("abc123");
+                conta.Abrir("abc123456789");
 
                 Console.WriteLine("Conta: " + conta.Situacao + ": " + conta.NumeroConta + "-" + conta.DigitoVerificador);
 
